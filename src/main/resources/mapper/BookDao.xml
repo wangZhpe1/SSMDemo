@@ -19,17 +19,17 @@
         limit #{offset},#{limit}
     </select>
     
-    <sql id="update" >
+    <sql id="updateBook" >
       update book 
       set number=number-1
-      <where>
-         <if test="update.bookId !=null">
-             book_id=#{update.bookId}
-         </if>
-      </where> 
+       
     </sql>
     
-    <update id="reduceNumber" parameterType="long">
-         <include refid="update"/>
+    <update id="reduceNumber" >
+        update book 
+         set number=number-1
+         where
+             book_id=#{bookId}
+        
     </update>
  </mapper>
